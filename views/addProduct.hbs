@@ -1,0 +1,192 @@
+<div class="addProduct">
+  <div class="container">
+    <h2>{{title}}</h2>
+    <div class="row justify-content-center">
+      <div class="col-11">
+        {{#if pActive}}
+          <form action="/add" method="POST" enctype="multipart/form-data">
+            <label for="name">Название товара</label>
+            <input
+              id="name"
+              type="text"
+              class="add_inp"
+              name="title"
+              placeholder="Название товара"
+            />
+            <label for="price">Цены</label>
+            <input
+              id="price"
+              type="text"
+              class="add_inp"
+              name="price"
+              placeholder="Цены"
+            />
+            <label for="photo">Фото</label>
+
+            <div class="boxPhotoInp">
+              <label class="labelImg">
+                <i class="far fa-folder-open"></i>
+                <span class="title">Добавить</span>
+                <input
+                  type="file"
+                  class="photo_inp"
+                  name="photo"
+                  placeholder="Фото"
+                />
+              </label>
+              <label class="labelImg">
+                <i class="far fa-folder-open"></i>
+                <span class="title">Добавить</span>
+                <input
+                  type="file"                   
+                  class="photo_inp"
+                  name="photo"
+                  placeholder="Фото"
+                />
+              </label>
+              <label class="labelImg">
+                <i class="far fa-folder-open"></i>
+                <span class="title">Добавить</span>
+                <input
+                  type="file"               
+                  class="photo_inp"
+                  name="photo"
+                  placeholder="Фото"
+                />
+              </label>
+              <label class="labelImg">
+                <i class="far fa-folder-open"></i>
+                <span class="title">Добавить</span>
+                <input
+                  type="file"            
+                  class="photo_inp"
+                  name="photo"
+                  placeholder="Фото"
+                />
+              </label>
+
+            </div>
+            <label for="about">Описания</label>
+            <textarea
+              class="add_inp"
+              name="about"
+              placeholder="Описания"
+            ></textarea>
+            <label for="category">Категория</label>
+            <select class="add_inp" name="category" id="category">
+              {{#each data}}
+                <option class="add_inp" value="{{title}}">{{title}}</option>
+              {{/each}}
+            </select>
+            <button class="add_btn">Добавить</button>
+          </form>
+        {{/if}}
+        {{#if pUpdate}}
+           <form method="POST" action="/add/update/{{db.id}}" enctype="multipart/form-data">
+            <label for="name">Название товара</label>
+            <input
+              id="name"
+              type="text"
+              class="add_inp"
+              name="title"
+              placeholder="Название товара"
+              value="{{db.title}}"
+            />
+            <label for="price">Цены</label>
+            <input
+              id="price"
+              type="text"
+              class="add_inp"
+              name="price"
+              placeholder="Цены"
+              value="{{db.price}}"
+            />
+               <label for="photo">Фото</label>
+
+            <div class="boxPhotoInp">
+              <label class="labelImg">
+                <i class="far fa-folder-open"></i>
+                <span class="title">Добавить</span>
+                {{#if db.photo.[0]}}
+                  <img src="imgCard/{{db.photo.[0].filename }}" alt="">
+                {{/if}}
+                <input
+                  type="file"
+                  class="photo_inp"
+                  name="photo"
+                  placeholder="Фото"
+    
+                />
+              </label>
+              <label class="labelImg">
+                <i class="far fa-folder-open"></i>
+                 {{#if db.photo.[1]}}
+                  
+                 <img src="imgCard/{{db.photo.[1].filename }}" alt="">
+                {{/if}}
+                <span class="title">Добавить</span>
+                <input
+                  type="file"                   
+                  class="photo_inp"
+                  name="photo"
+                  placeholder="Фото"
+                      
+                />
+              </label>
+              <label class="labelImg">
+                <i class="far fa-folder-open"></i>
+                 {{#if db.photo.[2]}}
+                  <img src="imgCard/{{db.photo.[2].filename }}" alt="">
+                {{/if}}
+                <span class="title">Добавить</span>
+                <input
+                  type="file"               
+                  class="photo_inp"
+                  name="photo"
+                  placeholder="Фото"
+                         
+                />
+              </label>
+              <label class="labelImg">
+                <i class="far fa-folder-open"></i>
+                 {{#if db.photo.[3]}}
+                 <img src="imgCard/{{db.photo.[3].filename }}" alt="">
+                {{/if}}
+                <span class="title">Добавить</span>
+                <input
+                  type="file"            
+                  class="photo_inp"
+                  name="photo"
+                  placeholder="Фото"
+                />
+              </label>
+
+            </div>
+            <label for="about">Описания</label>
+            <textarea
+              class="add_inp"
+              name="about"
+              placeholder="Описания"
+            >{{db.about}}</textarea>
+            <label for="category">Категория</label>
+            <select class="add_inp" name="category" id="category">
+              {{#if db.category}}
+                <option
+                  class="add_inp"
+                  value="{{db.category}}"
+                  selected
+                  disabled
+                >{{db.category}}</option>
+                {{#each data}}
+                  <option class="add_inp" value="{{title}}">{{title}}</option>
+                {{/each}}
+
+              {{/if}}
+            </select>
+            <button class="add_btn">Изменить</button>
+          </form>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

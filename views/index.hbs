@@ -1,0 +1,100 @@
+
+    <section>
+        <div class="cardProduct  ">
+            <h2 class="header-nav">товары</h2>
+            <div class="container">
+                <div class="row justify-content-sm-center justify-content-lg-start">
+                    {{#if db.length}}
+                            {{#each db}}
+                                <div class="col-xl-3 col-lg-4 col-sm-8 col-md-6">
+                                    <div class="card-product">
+                                        <div class="card-product-img">
+                                             {{#with photo.[0]}}
+                                            <img src="/imgCard/{{filename}}" alt="">
+                                            {{/with}}
+                                            <div class="card-product-icon">
+                                                <a href="/add/delete/{{id}}"><i class="fas fa-trash-alt"></i></a>
+                                                <a class="bag" href="/bag" data-id="{{id}}"><i class="fas fa-shopping-bag"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="card-product-text">
+                                            <h3>{{title}}</h3>
+                                            <p class="price"><i class="fas fa-tag"></i> <span class="sum">{{price}}</span></p>
+                                            <div class="card-helper-btn">
+                                                
+                                                <p class="date"><i class="far fa-calendar-minus"></i> {{dateNow}}  </p>
+                                                <p class="card-category"> {{category}}</p>
+                                                <a class="card-view" href="/product/{{id}}">Подробнее</a>
+                                            </div>
+                                            <a href="/add/update/{{id}}" class="update">Изменить</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            {{else}}
+                            <p>Товаров нет</p>
+                    {{/if}}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    {{> famousProduct}}
+       <section>
+        <div class="benefits" id="benefits">
+            <h2 class="header-nav">Преимущества</h2>
+            <div class="container">
+                <div class="row align-items-start">
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="text">
+                            <div class="img-icon">
+                                <img src="./img/i1.png" alt="">
+                            </div>
+                            <h3>Доступные цены</h3>
+                            <p class="icon">
+                                Преимущество нашей компании в том, что все товары мы привозим сами и по этой причине у
+                                нас всегда доступные цены. Станьте нашим постоянным клиентом и получайте скидки.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="text">
+                            <div class="img-icon">
+                                <img src="./img/warehouse-1073.png" alt="">
+                            </div>
+                            <h3>Всегда в наличии</h3>
+                            <p class="icon">
+                                Наше главное отличие от конкурентов- это то, что мы имеем широкий ассортимент товаров.
+                                Вы никогда не будете мучаться в ожидании, так как все товары у нас в наличии!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="text">
+                            <div class="img-icon">
+                                <img src="./img/quality.png" alt="">
+                            </div>
+                            <h3>Качество и Гарантия</h3>
+                            <p class="icon">
+                                Компания DISTARSYS уже много лет сотрудничает с топовыми заводами с многолетним опыто, и
+                                компания привозит 100% качественные и гарантированные товары.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="text">
+                            <div class="img-icon">
+                                <img src="./img/support-avatar-1686.png" alt="">
+                            </div>
+                            <h3>Качественный сервис</h3>
+                            <p class="icon">
+                                У нас работают профессионалы своего дела с большим опытом. Они ответят на любой ваш
+                                вопрос и обслужат вас на высшем уровне.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,68 @@
+{{> famousProduct}}
+
+  <section>
+        <div class="productInfo">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-md-8">
+                        <div class="infoCard">
+                            <div class="infoCard-img">
+                                <div class="owl-carousel">
+                                {{#each db.photo}}
+                                    <div class="productInfo-img">
+                                        <img src="/imgCard/{{filename}}" alt="">      
+                                    </div>
+                                {{/each}}
+                                </div>
+                            </div>
+                            <div class="infoCard-text">
+                                <h3>{{db.title}}</h3>
+                                <p class="price"><i class="fas fa-tag"></i> <span class="sum">{{db.price}}</span></p>
+                            </div>
+                            <div class="product-text">
+                                <h4>Описание</h4>
+                                <p>{{db.about}}</p>
+                            </div>
+                            <div class="infoCard-text-helper">
+                                <p class="date"><i class="far fa-calendar-minus"></i> {{db.dateNow}} </p>
+                                <p class="card-category"><span>Категория :</span> {{db.category}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="left-info-img">
+                            <img src="./img/logo.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="productInfo-carousel">
+                            <h3>Похожие объявления</h3>
+                            <div class="owl-carousel">
+                                {{#each otherProduct}}
+                                        <div class="productInfo-carousel-card">
+                                            <div class="productInfo-carousel-img">
+                                            {{#with photo.[0]}}
+                                                <img src="/imgCard/{{filename}}" alt="">
+                                            {{/with}}
+                                            </div>
+                                            <div class="productInfo-carousel-text">
+                                                <h4>{{title}}</h4>
+                                                <p class="price"><i class="fas fa-tag"></i> <span class="sum">{{price}}</span></p>
+                                                <div class="card-helper-btn">
+                                                    <p class="date"><i class="far fa-calendar-minus"></i> {{dateNow}} </p>
+                                                    <p class="card-category"> {{category}}</p>
+                                                </div>
+                                                <a class="card-view" href="/product/{{id}}">Подробнее</a>
+            
+                                            </div>
+                                        </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>

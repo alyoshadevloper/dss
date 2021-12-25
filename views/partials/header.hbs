@@ -1,0 +1,131 @@
+<header>
+
+  <div class="setting header-nav">
+    {{#if pActive}}
+      <a href="/add" class="linkActive">Добавить</a>
+    {{else}}
+      <a href="/add">Добавить</a>
+    {{/if}}
+    {{#if sActive}}
+      <a href="/category"  class="linkActive">настройка</a>
+    {{else}}
+       <a href="/category">настройка</a>
+    {{/if}}
+   
+  </div>
+  <!-- navbar-menu -->
+  <nav class="navbar">
+    <div class="header-nav">
+      <div class="nav-flex align-items-center justify-content-between">
+        <div class="nav-col-1">
+          <a href="/" class="logo"><img src="/img/logoHeader.png" alt="" /></a>
+        </div>
+        <div class="nav-col-7">
+          <div class="search">
+            <form action="#!">
+              <input type="text" name="" id="" placeholder="Найти" />
+              <button class="btn searching"><i
+                  class="fas fa-search"
+                ></i></button>
+            </form>
+          </div>
+        </div>
+        <div
+          class="nav-col-3 d-flex align-items-center justify-content-between"
+        >
+          <div class="shopBags">
+            <a href="/bag">
+              <i class="fas fa-shopping-bag">
+                <span class="count">0</span>
+              </i>
+              <span class="text-shopBags">Корзина</span>
+            </a>
+          </div>
+          <div class="phone">
+            <a href="tel:+998977043343">(97) 704-33-43</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="header-menubar">
+    <div class="nav-menu">
+      <div class="container header-menubars">
+        <div class="row">
+          <div class="col-12">
+            <ul class="nav">
+              <li><a class="sort">Категория
+                  <i class="fas fa-sort-down"></i></a></li>
+              {{#if eActive}}
+                <li><a class="link linkActive" href="/">Главная</a></li>
+              {{else}}
+                <li><a class="link" href="/">Главная</a></li>
+              {{/if}}
+              {{#if aActive}}
+                <li><a class="link linkActive" href="/about">О нас</a></li>
+              {{else}}
+                <li><a class="link" href="/about">О нас</a></li>
+              {{/if}}
+              {{#if cActive}}
+                <li><a class="link linkActive" href="/contact">Контакты</a></li>
+              {{else}}
+                <li><a class="link" href="/contact">Контакты</a></li>
+              {{/if}}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="nav-menu-list">
+      <div class="container">
+        <div class="row">
+          <div class="col-5">
+            <ul>
+               {{#each data}}
+                  <li><a href=""> {{title}} </a></li>
+                {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- scroll-top -->
+  <div class="scroll-top">
+    <a href="#!"><i class="fas fa-arrow-up"></i></a>
+  </div>
+
+  <!-- header-carousel -->
+  <div class="header-nasv">
+    <div class="owl-carousel">
+
+      <div class="hr_item">
+        <img src="./img/h1.jpg" alt="" />
+        <div class="hr-item-text">
+          <h2>Офисная техника</h2>
+          <a href="tel:+998935489878" class="tel-carousel">Позвонить</a>
+        </div>
+      </div>
+      <div class="hr_item">
+        <img src="./img/h2.jpg" alt="" />
+        <div class="hr-item-text">
+          <h2>компьютерные комплектующие</h2>
+          <a href="tel:+998935489878" class="tel-carousel">Позвонить</a>
+        </div>
+      </div>
+      <div class="hr_item">
+        <img src="./img/р3.jpg" alt="" />
+        <div class="hr-item-text">
+          <h2>Электросамокаты и запчасти</h2>
+          <a href="tel:+998935489878" class="tel-carousel">Позвонить</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>

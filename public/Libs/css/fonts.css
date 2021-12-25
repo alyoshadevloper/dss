@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "etelkaMedium";
+  src: url("../../fonts/EtelkaMedium.otf"), url("../../fonts/EtelkaBoldPro.otf"),
+    url("../../fonts/EtelkaLight.otf");
+}
+@font-face {
+  font-family: "etelkLight";
+  src: url("../../fonts/EtelkaLight.otf");
+}
+@font-face {
+  font-family: "etelkReg";
+  src: url("../../fonts/EtelkaRegPro.otf");
+}
+@font-face {
+  font-family: "etelkBold";
+  src: url("../../fonts/EtelkaBoldPro.otf");
+}
