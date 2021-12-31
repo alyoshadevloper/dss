@@ -17,9 +17,9 @@
             </thead>
             <tbody>
                
-                {{#each db}}
+                   {{#each db as |item i|}}
                   <tr class="price">
-                    <th scope="row">1</th>
+                    <th scope="row">{{i}}</th>
                     <td>{{title}}</td>
                     <td class="countTable">
                       <button class="count addCount">+</button>
@@ -43,3 +43,4 @@
     </div>
   </div>
 </section>
+  <script src="/js/fetch.js"></script>

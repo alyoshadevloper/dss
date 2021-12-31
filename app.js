@@ -1,7 +1,9 @@
 const createError = require('http-errors');
 const express = require('express');
+const session = require('express-session')
 const hbs = require('hbs');
 const path = require('path');
+const config = require('config')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
@@ -13,7 +15,7 @@ const productRouter = require('./routes/product');
 const addProductRouter = require('./routes/addProduct');
 const categoryRouter = require('./routes/category');
 const shoppingBagRouter = require('./routes/shopingBag');
-
+ 
 const app = express();
 
 // view engine setup
@@ -25,10 +27,16 @@ app.use(logger('dev'));
 app.use(express.json({limit : "10mb" ,      extended : true}) );
 app.use(express.urlencoded({limit : "10mb" , extended : true}) );
 app.use(cookieParser());
+app.use(session({
+  secret: config.get('dssGroups'),
+  resave: true,
+  saveUninitialized: false,     
+}))
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/product/:id", express.static(path.join(__dirname, 'public')));
 app.use("/add/:id", express.static(path.join(__dirname, 'public')));
-
+ 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/contact', contactRouter);

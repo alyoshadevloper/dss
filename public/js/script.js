@@ -174,7 +174,6 @@ $(document).ready(function () {
     /// ==========  section>addProduct> add product img  ==========
 
     var inp = $('.addProduct input')
-    console.log(inp);
 
     function download(input) {
         let file = input.files[0]
@@ -198,32 +197,94 @@ $(document).ready(function () {
         download(this)
     })
 
-    /* shopping bag send localstorege card id info */
 
-    var bags = $('.bag')
-    console.log(bags);
-    bags.on('click', function (e) {
+    /* shopping bag send session store card id info */
+
+    $('.bag').on('click', function (e) {
         e.preventDefault()
         var id = $(this).attr('data-id')
-        var str = id.slice(0 , 8)
-        let data =  
-            {
-                dataId: id,
-                ourId : str
-            }
-          
-        let options = {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json; charset=UTF-8"
-            },
-            body: JSON.stringify(data)
+        var data = {
+            bodyId: id
         }
-        fetch('/bag', options);
+        $.post('/bag', data);
 
     })
 
- 
+    /* shopping bag delete cards */
+
+    var deleteBags = $('.deleteBags')
+    deleteBags.on('click', function (e) {
+        let id = $(this).attr('data-id')
+        
+        $.get('/bag/delete/'+ id)
+    })
+
+
+    /* shopping bag send localstorege card id info */
+
+    // $('.bag').on('click', function (e) {
+    //     e.preventDefault()
+    //     var id = $(this).attr('data-id')
+    //     localStorage.setItem(id, id)
+
+    // })
+
+    // function getId() {
+    //     if (localStorage.length) {
+    //         for (var i = 0; i < localStorage.length; i++) {
+    //             var key = localStorage.key(i);
+    //             console.log(key);
+    //             var options = {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     "Content-Type": "text/javascript; charset=UTF-8"
+    //                 },
+    //                 data: key
+    //             }
+    //             $.get('/bag', options);
+    //         }
+    //     }
+    // }
+
+
+    // getId()
+
+
+
+
+
+
+    // $('.shopBags a').click(function (e) {
+    //     e.preventDefault()
+    //     window.location.href = '/bag'
+    //     getId()
+
+    // })
+
+
+
+
+    // bags.on('click', function (e) {
+    //     e.preventDefault()
+    //     var id = $(this).attr('data-id')
+    //     localStorage.setItem(id, id)
+    //     fetch('http://localhost:3000/bag/' + id)
+
+    // })
+
+
+
+    // .then(data => {
+    //     data.forEach(element => {
+    //         for (let i = 0; i < localStorage.length; i++) {
+    //             let key = localStorage.key(i);
+    //             if(key ===  data[i]._id){
+    //                 console.log(element );
+    //             }
+    //         }
+
+    //     });
+    // })
 
     /* shopping bag adding and removeing count */
 

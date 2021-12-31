@@ -4,9 +4,12 @@ const router = express.Router();
 
 /* POST adding category */
 
-router.get("/" , (req , res) => {
+router.get("/" , async (req , res) => {
+    const { showAd }  = await req.session
+   
     res.render('category' , {
         title: "Добавить категория",
+        count : (req.session.showAd) ? showAd.length : 0 ,  
         sActive : true
     })
 })

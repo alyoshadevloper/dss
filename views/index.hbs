@@ -1,4 +1,4 @@
-
+ 
     <section>
         <div class="cardProduct  ">
             <h2 class="header-nav">товары</h2>
@@ -13,8 +13,12 @@
                                             <img src="/imgCard/{{filename}}" alt="">
                                             {{/with}}
                                             <div class="card-product-icon">
-                                                <a href="/add/delete/{{id}}"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="/add/delete/{{id}}"><i class="fas fa-trash-alt"></i></a>                                              
+                                               {{#with count}}
+                                                <a class="bag eCount" href="/bag" data-id="{{id}}"><i class="fas fa-shopping-bag"></i></a>
+                                                {{else}}
                                                 <a class="bag" href="/bag" data-id="{{id}}"><i class="fas fa-shopping-bag"></i></a>
+                                                {{/with}} 
                                             </div>
                                         </div>
                                         <div class="card-product-text">
@@ -98,3 +102,4 @@
             </div>
         </div>
     </section>
+  

@@ -36,7 +36,11 @@
           <div class="shopBags">
             <a href="/bag">
               <i class="fas fa-shopping-bag">
+                {{#if count}}
+                <span class="count">{{count}}</span>
+                {{else}}
                 <span class="count">0</span>
+                {{/if}}
               </i>
               <span class="text-shopBags">Корзина</span>
             </a>

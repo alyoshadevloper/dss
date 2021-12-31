@@ -614,6 +614,10 @@ section .cardProduct .card-product .card-product-img .card-product-icon a {
   transition: 500ms;
 }
 
+section .cardProduct .card-product .card-product-img .card-product-icon .eCount{
+  color: #f49d37;
+}
+
 section
   .cardProduct
   .card-product

@@ -1,42 +1,54 @@
 const express = require('express')
-const store = require("store2");
-const fetch = require('node-fetch')
 const dbProduct = require('../model/Product')
 const router = express.Router()
 
-
-
-
 router.get('/', async (req, res) => {
-    const data = store('sas')
-    const db  =  await  dbProduct.find({ _id :  data })
-    res.render('shoppingBag', {
-        title: "Корзина",
-        db
-    })
- 
-
-
-
-
-
-
+    console.log(req.session);
+    if(req.session.showAd){
+        const { showAd }  = await req.session
+        const count = showAd.length
+        const ids =  await [...showAd ]
+        
+        const db = await dbProduct.find({ _id : ids })
+        res.render('shoppingBag' , {
+            title : "Корзина",
+            db,
+            count : count
+        } )
+    }else{
+        res.render('shoppingBag' , {
+            title : "Корзина",
+             
+        })
+    }
 })
 
 
-router.post('/', async (req, res) => {
-    console.log(req.body);
-    await store.set("sas", req.body.dataId)
-    res.redirect('/bag')
-
+  router.post('/', async (req, res) => {
+      const { bodyId   } =  await req.body
+      const { showAd } =  await req.session
+      if(req.session.showAd &&  showAd[showAd.indexOf(bodyId)] !== bodyId ){
+        req.session.showAd.push(bodyId)
+      }else{
+        req.session.showAd = [bodyId]
+      }
+      res.sendStatus(200)
+  
 })
 
-// router.get('/remove/:id' ,  async (req , res) => {
-//     const data = await store.getAll()
-//     console.log(data);
-//     store.remove(req.params.id)
+router.get('/delete/:id' , async  (req  , res) => {
 
-// })
+    const { showAd }  = await req.session
+    if(req.params.id){
+         await showAd.splice(showAd.indexOf(req.params.id)  , 1)
+         res.redirect('/bag')
+    }else{
+        res.redirect('/bag')
+    }
+        
+     
+
+})
 
 
 module.exports = router
